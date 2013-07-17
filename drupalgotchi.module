@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function drupalgotchi_permission() {
+  return array(
+    'administer drupalgotchi' => array(
+      'title' => t('Change the Drupalgotchi settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function drupalgotchi_menu() {
+  $items['admin/config/system/drupalgotchi'] = array(
+    'title' => 'Configure Drupalgotchi',
+    'description' => 'Setup the Drupalgotchi for your site.',
+    'route_name' => 'drupalgotchi_settings',
+  );
+
+  return $items;
+}

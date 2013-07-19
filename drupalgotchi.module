@@ -8,6 +8,9 @@ function drupalgotchi_permission() {
     'administer drupalgotchi' => array(
       'title' => t('Change the Drupalgotchi settings'),
     ),
+    'make drupalgotchi happy' => array(
+      'title' => t('Perform tasks to make the site happier'),
+    ),
   );
 }
 

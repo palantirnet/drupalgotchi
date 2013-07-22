@@ -17,7 +17,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'Recent comments' block.
+ * Provides a Drupalgotchi status block.
  *
  * @Plugin(
  *  id = "drupalgotchi_status",
@@ -55,6 +55,7 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
   }
 
   /**
+   * Constructs a new DrupalgotchiBlock object.
    *
    * @param array $configuration
    * @param type $plugin_id

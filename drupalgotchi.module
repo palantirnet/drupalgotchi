@@ -18,6 +18,12 @@ function drupalgotchi_permission() {
  * Implements hook_menu().
  */
 function drupalgotchi_menu() {
+  $items['drupalgotchi'] = array(
+    'title' => 'Drupalgotchi',
+    'description' => 'The requisite hello-world page.',
+    'route_name' => 'drupalgotchi_hello',
+  );
+
   $items['admin/config/system/drupalgotchi'] = array(
     'title' => 'Configure Drupalgotchi',
     'description' => 'Setup the Drupalgotchi for your site.',
@@ -33,6 +39,10 @@ function drupalgotchi_menu() {
  */
 function drupalgotchi_theme() {
   return array(
+    'drupalgotchi_hello' => array(
+      'variables' => array('name' => NULL),
+      'template' => 'drupalgotchi_hello',
+    ),
     'drupalgotchi_status_block' => array(
       'variables' => array('attention' => NULL, 'name' => NULL),
       'template' => 'drupalgotchi_status_block',

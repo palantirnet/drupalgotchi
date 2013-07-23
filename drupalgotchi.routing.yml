@@ -1,3 +1,11 @@
+drupalgotchi_hello:
+  pattern: '/drupalgotchi'
+  defaults:
+    _content: '\Drupal\drupalgotchi\Controller\DrupalgotchiController::hello'
+  requirements:
+    _permission: 'access content'
+
+
 drupalgotchi_settings:
   pattern: '/admin/config/system/drupalgotchi'
   defaults:

@@ -1,5 +1,5 @@
 drupalgotchi_hello:
-  pattern: '/drupalgotchi'
+  pattern: '/drupalgotchi/{person}'
   defaults:
     _content: '\Drupal\drupalgotchi\Controller\DrupalgotchiController::hello'
   requirements:

@@ -40,7 +40,7 @@ function drupalgotchi_menu() {
 function drupalgotchi_theme() {
   return array(
     'drupalgotchi_hello' => array(
-      'variables' => array('name' => NULL),
+      'variables' => array('name' => NULL, 'person' => NULL),
       'template' => 'drupalgotchi_hello',
     ),
     'drupalgotchi_status_block' => array(

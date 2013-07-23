@@ -30,11 +30,12 @@ class DrupalgotchiController implements ControllerInterface {
     $this->configFactory = $config_factory;
   }
 
-  public function hello() {
+  public function hello($person) {
     $name = $this->configFactory->get('drupalgotchi.settings')->get('name');
     return array(
       '#theme' => 'drupalgotchi_hello',
       '#name' => $name,
+      '#person' => $person,
     );
   }
 

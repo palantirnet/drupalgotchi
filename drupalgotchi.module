@@ -43,6 +43,10 @@ function drupalgotchi_theme() {
       'variables' => array('name' => NULL, 'person' => NULL),
       'template' => 'drupalgotchi_hello',
     ),
+    'drupalgotchi_hello_block' => array(
+      'variables' => array('person' => NULL),
+      'template' => 'drupalgotchi_hello_block',
+    ),
     'drupalgotchi_status_block' => array(
       'variables' => array('attention' => NULL, 'name' => NULL),
       'template' => 'drupalgotchi_status_block',

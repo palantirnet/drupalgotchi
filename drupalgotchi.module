@@ -41,15 +41,15 @@ function drupalgotchi_theme() {
   return array(
     'drupalgotchi_hello' => array(
       'variables' => array('name' => NULL, 'person' => NULL),
-      'template' => 'drupalgotchi_hello',
+      'template' => 'drupalgotchi-hello',
     ),
     'drupalgotchi_hello_block' => array(
       'variables' => array('person' => NULL),
-      'template' => 'drupalgotchi_hello_block',
+      'template' => 'drupalgotchi-hello-block',
     ),
     'drupalgotchi_status_block' => array(
       'variables' => array('attention' => NULL, 'name' => NULL),
-      'template' => 'drupalgotchi_status_block',
+      'template' => 'drupalgotchi-status-block',
     ),
   );
 }

@@ -26,10 +26,24 @@ class DrupalgotchiController implements ControllerInterface {
     return new static($container->get('config.factory'));
   }
 
+  /**
+   *
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   *   The configuration system.
+   */
   public function __construct(ConfigFactory $config_factory) {
     $this->configFactory = $config_factory;
   }
 
+  /**
+   * Route callback method.
+   *
+   * @param $person
+   *   The name to display.
+   *
+   * @return
+   *   A theme array. See drupalgotchi-hello.html.twig.
+   */
   public function hello($person) {
     $name = $this->configFactory->get('drupalgotchi.settings')->get('name');
     return array(

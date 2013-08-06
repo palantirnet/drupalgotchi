@@ -13,7 +13,7 @@ use Drupal\Core\Action\ActionBase;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Translation\TranslationManager;
+use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
 
 /**
  * Sets the attention level of the site.
@@ -52,10 +52,8 @@ class SetDrupalgotchi extends ActionBase implements ContainerFactoryPluginInterf
    * @param array $plugin_definition
    * @param \Drupal\Core\KeyValueStore\KeyValueStoreInterface $state
    *   The state service.
-   * @param \Drupal\Core\Config\ConfigFactory $config_factory
-   *   The config factory service.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, KeyValueStoreInterface $state, ConfigFactory $config_factory, TranslationManager $translation) {
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, KeyValueStoreInterface $state) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->state = $state;
   }

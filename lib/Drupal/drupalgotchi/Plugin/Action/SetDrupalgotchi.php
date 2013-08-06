@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\drupalgotchi\Plugin\Action\PromoteNode.
+ * Contains \Drupal\drupalgotchi\Plugin\Action\SetDrupalgotchi.
  */
 
 namespace Drupal\drupalgotchi\Plugin\Action;

@@ -17,4 +17,26 @@ use Drupal\drupalgotchi\Plugin\Action\SetDrupalgotchi;
  */
 class SetDrupalgotchiTest extends UnitTestCase {
 
+  protected $state;
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Set Drupalgotchi plugin',
+      'description' => 'Tests the set Drupalgotchi plugin',
+      'group' => 'Drupalgotchi',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::setUp();
+
+    $this->state = $this
+      ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
+      ->disableOriginalConstructor()
+      ->getMock();
+  }
+
 }

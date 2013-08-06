@@ -52,6 +52,12 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
     $this->translator = $translator;
   }
 
+  /**
+   * Responds to kernel event to set happiness level.
+   *
+   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   *   The system event.
+   */
   public function onKernelRequestSetHappiness(GetResponseEvent $event) {
     if ($event->getRequestType() != KernelInterface::MASTER_REQUEST) {
       return;
@@ -75,6 +81,12 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
     $this->state->set('drupalgotchi.attention', $attention_quotient);
   }
 
+  /**
+   * Responds to kernel event to display level.
+   *
+   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   *   The system event.
+   */
   public function onKernelRequestShowHappiness(GetResponseEvent $event) {
     if ($event->getRequestType() != KernelInterface::MASTER_REQUEST) {
       return;
@@ -90,6 +102,9 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
     }
   }
 
+  /**
+   * Registers event subscribers.
+   */
   public static function getSubscribedEvents() {
     $events[KernelEvents::REQUEST][] = array('onKernelRequestSetHappiness', 5);
     $events[KernelEvents::REQUEST][] = array('onKernelRequestShowHappiness', 2);

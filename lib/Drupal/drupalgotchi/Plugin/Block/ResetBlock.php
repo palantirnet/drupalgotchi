@@ -51,7 +51,6 @@ class ResetBlock extends BlockBase implements ContainerFactoryPluginInterface {
    */
   protected $configFactory;
 
-
   /**
    * {@inheritdoc}
    */
@@ -72,8 +71,10 @@ class ResetBlock extends BlockBase implements ContainerFactoryPluginInterface {
    * @param array $configuration
    * @param type $plugin_id
    * @param array $plugin_definition
-   * @param \Drupal\Core\KeyValueStore\KeyValueStoreInterface $state
-   *   The state service.
+   * @param \Drupal\Core\Action\ActionManager $actions_manager
+   *   The actions system.
+   * @param \Drupal\Core\StringTranslation\TranslationManager $translator
+   *   The translation system.
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The config factory service.
    */

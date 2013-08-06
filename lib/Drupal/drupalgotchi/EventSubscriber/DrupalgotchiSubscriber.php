@@ -43,6 +43,8 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
    *   The configuration system.
    * @param \Drupal\Core\KeyValueStore\KeyValueStoreInterface $state
    *   The state storage system.
+   * @param \Drupal\Core\StringTranslation\TranslationManager $translator
+   *   The translation system.
    */
   public function __construct(ConfigFactory $config_factory, KeyValueStoreInterface $state, TranslationManager $translator) {
     $this->configFactory = $config_factory;

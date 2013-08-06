@@ -39,6 +39,7 @@ class ResetForm implements FormInterface {
    *
    * @param \Drupal\Core\Action\ActionManager $actions_manager
    * @param \Drupal\Core\StringTranslation\TranslationManager $translation
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
    */
   public function __construct(ActionManager $actions_manager, TranslationManager $translation, ConfigFactory $config_factory) {
     $this->actionsManager = $actions_manager;

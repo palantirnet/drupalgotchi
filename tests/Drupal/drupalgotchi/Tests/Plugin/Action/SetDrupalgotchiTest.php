@@ -8,7 +8,6 @@
 namespace Drupal\drupalgotchi\Tests\Plugin\Action;
 
 use Drupal\Tests\UnitTestCase;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Drupal\drupalgotchi\Plugin\Action\SetDrupalgotchi;
 
 /**
@@ -18,14 +17,10 @@ use Drupal\drupalgotchi\Plugin\Action\SetDrupalgotchi;
  */
 class SetDrupalgotchiTest extends UnitTestCase {
 
-  protected $state;
-
   /**
-   * The dependency injection container.
-   *
-   * @var \Symfony\Component\DependencyInjection\ContainerBuilder
+   * The key/value store.
    */
-  protected $container;
+  protected $state;
 
   public static function getInfo() {
     return array(
@@ -41,14 +36,17 @@ class SetDrupalgotchiTest extends UnitTestCase {
   protected function setUp() {
     parent::setUp();
 
-    $this->container = new ContainerBuilder();
+    // Autoloading is not working for contrib. We can autoload the classes
+    // for PHPUnit and then load our class to test.
+    // See https://drupal.org/node/2025883
+    include_once DRUPAL_ROOT . '/core/vendor/autoload.php';
+    include_once DRUPAL_ROOT . '/modules/drupalgotchi/lib/Drupal/drupalgotchi/Plugin/Action/SetDrupalgotchi.php';
 
+    // This part does not seem to be working.
     $this->state = $this
       ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
-      ->disableOriginalConstructor()
       ->getMock();
 
-    #$this->state->setContainer($this->container);
   }
 
   /**
@@ -57,12 +55,14 @@ class SetDrupalgotchiTest extends UnitTestCase {
   public function testSet() {
     $this->assertEquals(1, 1);
     $attention = $this->state->get('drupalgotchi.attention');
-    $this->assertEquals($attention, 0);
+    $this->assertEquals(0, $attention);
     $config = array('name' => 'foo', 'needy' => 10);
-    $set_state_plugin = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array());
+    $set_state_plugin = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $this->state);
+    // This part is not working as expected.
     $set_state_plugin->execute(10);
     $attention = $this->state->get('drupalgotchi.attention');
-    $this->assertEquals($attention, 10);
+    $this->assertEquals(10, $attention);
+
   }
 
 }

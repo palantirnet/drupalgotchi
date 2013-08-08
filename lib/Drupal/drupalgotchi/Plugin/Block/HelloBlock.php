@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\drupalgotchi\Plugin\Block\DrupalgotchiBlock.
+ * Contains \Drupal\drupalgotchi\Plugin\Block\HelloBlock.
  */
 
 namespace Drupal\drupalgotchi\Plugin\Block;
@@ -12,7 +12,7 @@ use Drupal\Component\Annotation\Plugin;
 use Drupal\Core\Annotation\Translation;
 
 /**
- * Provides a Drupalgotchi status block.
+ * Provides a Drupalgotchi hello block.
  *
  * @Plugin(
  *  id = "drupalgotchi_hello",

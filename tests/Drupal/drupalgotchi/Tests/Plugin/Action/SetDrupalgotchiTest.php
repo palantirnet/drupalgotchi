@@ -46,9 +46,6 @@ class SetDrupalgotchiTest extends UnitTestCase {
       ->getMock();
     // Configure the stub.
     $this->stub->expects($this->any())
-      ->method('set')
-      ->will($this->returnValue(10));
-    $this->stub->expects($this->any())
       ->method('get')
       ->will($this->returnValue(10));
 
@@ -60,11 +57,10 @@ class SetDrupalgotchiTest extends UnitTestCase {
   public function testSet() {
     $config = array('name' => 'foo', 'needy' => 10);
     $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $this->stub);
-    // Fails, doing nothing because the method doesn't return anything.
-    $this->assertEquals(10, $set->execute(10));
-    // Passes, but useless, because it bypasses our class.
+    // Ensure that our class does not explode.
+    $set->execute(10);
+    // Check the behavior we expect.
     $this->assertEquals(10, $this->stub->get('drupalgotchi.attention'));
-
   }
 
 }

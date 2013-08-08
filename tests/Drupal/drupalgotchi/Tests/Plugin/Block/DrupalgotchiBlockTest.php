@@ -29,8 +29,7 @@ class DrupalgotchiBlockTest extends UnitTestCase {
   protected function setUp() {
     parent::setUp();
 
-    // Autoloading is not working for contrib. We can autoload the classes
-    // for PHPUnit and then load our class to test.
+    // Autoloading is not working for contrib. Load our class to test.
     // See https://drupal.org/node/2025883
     include_once DRUPAL_ROOT . '/modules/drupalgotchi/lib/Drupal/drupalgotchi/Plugin/Block/HelloBlock.php';
   }

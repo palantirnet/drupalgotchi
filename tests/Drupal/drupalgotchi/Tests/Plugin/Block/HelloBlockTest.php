@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\drupalgotchi\Tests\Plugin\Block\DrupalgotchiBlockTest.
+ * Contains \Drupal\drupalgotchi\Tests\Plugin\Block\HelloBlockTest.
  */
 
 namespace Drupal\drupalgotchi\Tests\Plugin\Block;
@@ -13,12 +13,12 @@ use Drupal\drupalgotchi\Plugin\Block\HelloBlock;
 /**
  * Tests the Drupalgotchi block.
  */
-class DrupalgotchiBlockTest extends UnitTestCase {
+class HelloBlockTest extends UnitTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => 'Drupalgotchi block plugin',
-      'description' => 'Tests the basic Drupalgotchi block',
+      'name' => 'Drupalgotchi hello block plugin',
+      'description' => 'Tests the Drupalgotchi hello block',
       'group' => 'Drupalgotchi',
     );
   }

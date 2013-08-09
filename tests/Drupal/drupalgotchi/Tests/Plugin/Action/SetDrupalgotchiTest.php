@@ -39,28 +39,27 @@ class SetDrupalgotchiTest extends UnitTestCase {
     // Autoloading is not working for contrib. Load our class to test.
     // See https://drupal.org/node/2025883
     include_once DRUPAL_ROOT . '/modules/drupalgotchi/lib/Drupal/drupalgotchi/Plugin/Action/SetDrupalgotchi.php';
-
-    // Set a mock class for the state container.
-    $this->stub = $this
-      ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
-      ->getMock();
-    // Configure the stub.
-    $this->stub->expects($this->any())
-      ->method('get')
-      ->will($this->returnValue(10));
-
   }
 
   /**
    * Tests the execute method for setting state value.
    */
   public function testSet() {
+
+    // Set a mock class for the state container.
+    $stub = $this
+      ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
+      ->getMock();
+    // Configure the stub to get the values passed by exexute().
+    $stub->expects($this->any())
+      ->method('set')
+      ->with($this->equalTo('drupalgotchi.attention', 10));
+
     $config = array('name' => 'foo', 'needy' => 10);
-    $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $this->stub);
+    $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $stub);
     // Ensure that our class does not explode.
     $set->execute(10);
-    // Check the behavior we expect.
-    $this->assertEquals(10, $this->stub->get('drupalgotchi.attention'));
+
   }
 
 }

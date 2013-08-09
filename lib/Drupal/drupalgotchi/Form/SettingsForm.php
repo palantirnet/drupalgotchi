@@ -3,7 +3,7 @@
 namespace Drupal\drupalgotchi\Form;
 
 use Drupal\system\SystemConfigFormBase;
-use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Config\Config;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -12,20 +12,20 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class SettingsForm extends SystemConfigFormBase {
 
   /**
-   * The configuration system.
+   * The configuration object.
    *
-   * @var \Drupal\Core\Config\ConfigFactory
+   * @var \Drupal\Core\Config\Config
    */
-  protected $configFactory;
+  protected $config;
 
   /**
    * Constructs a \Drupal\drupalgotchi\SettingsForm object.
    *
-   * @param \Drupal\Core\Config\ConfigFactory $config_factory
-   *   The factory for configuration objects.
+   * @param \Drupal\Core\Config\Config $configy
+   *   The configuration object.
    */
-  public function __construct(ConfigFactory $config_factory) {
-    $this->configFactory = $config_factory;
+  public function __construct(Config $config) {
+    $this->config = $config;
   }
 
   /**
@@ -33,7 +33,7 @@ class SettingsForm extends SystemConfigFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('config.factory')
+      $container->get('config.factory')->get('drupalgotchi.settings')
     );
   }
 
@@ -48,13 +48,12 @@ class SettingsForm extends SystemConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, array &$form_state) {
-    $config = $this->configFactory->get('drupalgotchi.settings');
 
     $form['name'] = array(
       '#title' => t('Name'),
       '#description' => t('What is your site animal\'s name?'),
       '#type' => 'textfield',
-      '#default_value' => $config->get('name'),
+      '#default_value' => $this->config->get('name'),
     );
 
     $form['needy'] = array(
@@ -64,7 +63,7 @@ class SettingsForm extends SystemConfigFormBase {
       '#step' => 1,
       '#min' => 1,
       '#max' => 10,
-      '#default_value' => $config->get('needy'),
+      '#default_value' => $this->config->get('needy'),
     );
 
     return parent::buildForm($form, $form_state);
@@ -75,11 +74,10 @@ class SettingsForm extends SystemConfigFormBase {
    */
   public function submitForm(array &$form, array &$form_state) {
     parent::submitForm($form, $form_state);
-    $config = $this->configFactory->get('drupalgotchi.settings');
 
-    $config->set('name', $form_state['values']['name']);
-    $config->set('needy', $form_state['values']['needy']);
+    $this->config->set('name', $form_state['values']['name']);
+    $this->config->set('needy', $form_state['values']['needy']);
 
-    $config->save();
+    $this->config->save();
   }
 }

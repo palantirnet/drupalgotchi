@@ -12,7 +12,7 @@ use Drupal\Component\Annotation\Plugin;
 use Drupal\Core\Annotation\Translation;
 
 use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
-use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Config\Config;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -35,11 +35,11 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
   protected $state;
 
   /**
-   * The configuration system.
+   * The configuration object.
    *
-   * @var \Drupal\Core\Config\ConfigFactory
+   * @var \Drupal\Core\Config\Config
    */
-  protected $configFactory;
+  protected $config;
 
   /**
    * {@inheritdoc}
@@ -50,7 +50,7 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
       $plugin_id,
       $plugin_definition,
       $container->get('state'),
-      $container->get('config.factory')
+      $container->get('config.factory')->get('drupalgotchi.settings')
     );
   }
 
@@ -65,10 +65,10 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The config factory service.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, KeyValueStoreInterface $state, ConfigFactory $config_factory) {
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, KeyValueStoreInterface $state, Config $config) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->state = $state;
-    $this->configFactory = $config_factory;
+    $this->config = $config;
   }
 
   /**
@@ -76,7 +76,7 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
    */
   public function build() {
     $attention_quotient = $this->state->get('drupalgotchi.attention');
-    $name = $this->configFactory->get('drupalgotchi.settings')->get('name');
+    $name = $this->config->get('name');
 
     return array(
       '#theme' => 'drupalgotchi_status_block',

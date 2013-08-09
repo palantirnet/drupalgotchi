@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Action\ActionManager;
 use Drupal\Core\StringTranslation\TranslationManager;
-use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Config\Config;
 
 /**
  * Configuration form for Drupalgotchi.
@@ -28,23 +28,23 @@ class ResetForm implements FormInterface {
   protected $translation;
 
   /**
-   * The configuration system.
+   * The configuration object.
    *
-   * @var \Drupal\Core\Config\ConfigFactory
+   * @var \Drupal\Core\Config
    */
-  protected $configFactory;
+  protected $config;
 
   /**
    * Constructs a \Drupal\drupalgotchi\SettingsForm object.
    *
    * @param \Drupal\Core\Action\ActionManager $actions_manager
    * @param \Drupal\Core\StringTranslation\TranslationManager $translation
-   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   * @param \Drupal\Core\Config\Config $config
    */
-  public function __construct(ActionManager $actions_manager, TranslationManager $translation, ConfigFactory $config_factory) {
+  public function __construct(ActionManager $actions_manager, TranslationManager $translation, Config $config) {
     $this->actionsManager = $actions_manager;
     $this->translation = $translation;
-    $this->configFactory = $config_factory;
+    $this->config = $config;
   }
 
   /**
@@ -77,7 +77,7 @@ class ResetForm implements FormInterface {
   public function submitForm(array &$form, array &$form_state) {
     $this->actionsManager->createInstance('drupalgotchi_set_attention')->execute(0);
 
-    $name = $this->configFactory->get('drupalgotchi.settings')->get('name');
+    $name = $this->config->get('name');
     drupal_set_message($this->translation->translate('@name\'s attention level has been reset', array(
       '@name' => $name,
     )));

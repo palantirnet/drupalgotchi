@@ -8,6 +8,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
+use Drupal\Core\Config\Config;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\StringTranslation\TranslationManager;
 
@@ -24,11 +25,11 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
   protected $state;
 
   /**
-   * The configuration system.
+   * The configuration object.
    *
-   * @var \Drupal\Core\Config\ConfigFactory
+   * @var \Drupal\Core\Config\Config
    */
-  protected $configFactory;
+  protected $config;
 
   /**
    * The translation system.
@@ -47,7 +48,7 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
    *   The translation system.
    */
   public function __construct(ConfigFactory $config_factory, KeyValueStoreInterface $state, TranslationManager $translator) {
-    $this->configFactory = $config_factory;
+    $this->config = $config_factory->get('drupalgotchi.settings');
     $this->state = $state;
     $this->translator = $translator;
   }
@@ -73,7 +74,7 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
     $attention_quotient = $this->state->get('drupalgotchi.attention') ?: 0;
 
     if ($event->getRequest()->attributes->get('_account')->hasPermission('make drupalgotchi happy')) {
-      $neediness = $this->configFactory->get('drupalgotchi.settings')->get('needy');
+      $neediness = $this->config->get('needy');
       $change = 10 - $neediness;
       $attention_quotient += $change;
     }
@@ -104,9 +105,8 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
 
     $attention_quotient = $this->state->get('drupalgotchi.attention') ?: 0;
     if ($attention_quotient <= 0) {
-      $config = $this->configFactory->get('drupalgotchi.settings');
       $message = $this->translator->translate('@name misses its owner. Please come back! @name has a sad. :-(', array(
-        '@name' => $config->get('name'),
+        '@name' => $this->config->get('name'),
       ));
       drupal_set_message($message);
     }

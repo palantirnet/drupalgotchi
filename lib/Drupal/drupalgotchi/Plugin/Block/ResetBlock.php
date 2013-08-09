@@ -15,7 +15,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Action\ActionManager;
 use Drupal\Core\StringTranslation\TranslationManager;
-use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Config\Config;
 
 use Drupal\drupalgotchi\Form\ResetForm;
 
@@ -45,11 +45,11 @@ class ResetBlock extends BlockBase implements ContainerFactoryPluginInterface {
   protected $translation;
 
   /**
-   * The configuration system.
+   * The configuration object.
    *
-   * @var \Drupal\Core\Config\ConfigFactory
+   * @var \Drupal\Core\Config\Config
    */
-  protected $configFactory;
+  protected $config;
 
   /**
    * {@inheritdoc}
@@ -61,7 +61,7 @@ class ResetBlock extends BlockBase implements ContainerFactoryPluginInterface {
       $plugin_definition,
       $container->get('plugin.manager.action'),
       $container->get('string_translation'),
-      $container->get('config.factory')
+      $container->get('config.factory')->get('drupalgotchi.settings')
     );
   }
 
@@ -78,18 +78,18 @@ class ResetBlock extends BlockBase implements ContainerFactoryPluginInterface {
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The config factory service.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, ActionManager $actions_manager, TranslationManager $translation, ConfigFactory $config_factory) {
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, ActionManager $actions_manager, TranslationManager $translation, Config $config) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->actionsManager = $actions_manager;
     $this->translation = $translation;
-    $this->configFactory = $config_factory;
+    $this->config = $config;
   }
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    return drupal_get_form(new ResetForm($this->actionsManager, $this->translation, $this->configFactory));
+    return drupal_get_form(new ResetForm($this->actionsManager, $this->translation, $this->config));
   }
 
 }

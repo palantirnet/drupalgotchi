@@ -40,7 +40,7 @@ class SetDrupalgotchiTest extends UnitTestCase {
     // See https://drupal.org/node/2025883
     include_once DRUPAL_ROOT . '/modules/drupalgotchi/lib/Drupal/drupalgotchi/Plugin/Action/SetDrupalgotchi.php';
 
-    // This part does not seem to be working.
+    // Set a mock class for the state container.
     $this->stub = $this
       ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
       ->getMock();

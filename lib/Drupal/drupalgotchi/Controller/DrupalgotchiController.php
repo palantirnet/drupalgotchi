@@ -3,9 +3,6 @@
 namespace Drupal\drupalgotchi\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
-use Drupal\Core\Config\ConfigFactory;
 
 /**
  * Controller class for the Drupalgotchi module.
@@ -13,7 +10,7 @@ use Drupal\Core\Config\ConfigFactory;
 class DrupalgotchiController extends ControllerBase {
 
   /**
-   * Route callback method.
+   * Route callable method.
    *
    * @param $person
    *   The name to display.

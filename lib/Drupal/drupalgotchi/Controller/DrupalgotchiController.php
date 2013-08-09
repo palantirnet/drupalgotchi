@@ -12,7 +12,6 @@ use Drupal\Core\Config\ConfigFactory;
  */
 class DrupalgotchiController extends ControllerBase {
 
-
   /**
    * Route callback method.
    *

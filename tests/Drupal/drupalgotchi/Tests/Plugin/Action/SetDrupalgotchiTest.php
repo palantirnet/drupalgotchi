@@ -47,7 +47,12 @@ class SetDrupalgotchiTest extends UnitTestCase {
   public function testSet() {
 
     $config = array('name' => 'foo', 'needy' => 10);
-    $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $state);
+    $set = new SetDrupalgotchi(
+      $config,
+      'drupalgotchi_set_attention',
+      array(),
+      $state
+    );
     // Ensure that our class does not explode.
     $set->execute(10);
 

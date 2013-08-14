@@ -4,31 +4,14 @@
  * Implements hook_permission().
  */
 function drupalgotchi_permission() {
-  return array(
-    'administer drupalgotchi' => array(
-      'title' => t('Change the Drupalgotchi settings'),
-    ),
-    'make drupalgotchi happy' => array(
-      'title' => t('Perform tasks to make the site happier'),
-    ),
-  );
+  return array();
 }
 
 /**
  * Implements hook_menu().
  */
 function drupalgotchi_menu() {
-  $items['drupalgotchi'] = array(
-    'title' => 'Drupalgotchi',
-    'description' => 'The requisite hello-world page.',
-    'route_name' => 'drupalgotchi_hello',
-  );
-
-  $items['admin/config/system/drupalgotchi'] = array(
-    'title' => 'Configure Drupalgotchi',
-    'description' => 'Setup the Drupalgotchi for your site.',
-    'route_name' => 'drupalgotchi_settings',
-  );
+  $items = array();
 
   return $items;
 }
@@ -38,18 +21,5 @@ function drupalgotchi_menu() {
  * Implements hook_theme().
  */
 function drupalgotchi_theme() {
-  return array(
-    'drupalgotchi_hello' => array(
-      'variables' => array('name' => NULL, 'person' => NULL),
-      'template' => 'drupalgotchi-hello',
-    ),
-    'drupalgotchi_hello_block' => array(
-      'variables' => array('person' => NULL),
-      'template' => 'drupalgotchi-hello-block',
-    ),
-    'drupalgotchi_status_block' => array(
-      'variables' => array('attention' => NULL, 'name' => NULL),
-      'template' => 'drupalgotchi-status-block',
-    ),
-  );
+  return array();
 }

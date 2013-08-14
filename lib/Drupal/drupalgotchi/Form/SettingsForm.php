@@ -49,22 +49,6 @@ class SettingsForm extends SystemConfigFormBase {
    */
   public function buildForm(array $form, array &$form_state) {
 
-    $form['name'] = array(
-      '#title' => t('Name'),
-      '#description' => t('What is your site animal\'s name?'),
-      '#type' => 'textfield',
-      '#default_value' => $this->config->get('name'),
-    );
-
-    $form['needy'] = array(
-      '#title' => t('Neediness'),
-      '#description' => t('How needy the site is for attention. Range is from 1-10.'),
-      '#type' => 'range',
-      '#step' => 1,
-      '#min' => 1,
-      '#max' => 10,
-      '#default_value' => $this->config->get('needy'),
-    );
 
     return parent::buildForm($form, $form_state);
   }
@@ -75,9 +59,5 @@ class SettingsForm extends SystemConfigFormBase {
   public function submitForm(array &$form, array &$form_state) {
     parent::submitForm($form, $form_state);
 
-    $this->config->set('name', $form_state['values']['name']);
-    $this->config->set('needy', $form_state['values']['needy']);
-
-    $this->config->save();
   }
 }

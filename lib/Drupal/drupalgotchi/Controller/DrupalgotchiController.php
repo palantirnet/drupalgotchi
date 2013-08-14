@@ -19,13 +19,7 @@ class DrupalgotchiController extends ControllerBase {
    *   A theme array. See drupalgotchi-hello.html.twig.
    */
   public function hello($person) {
-    $name = $this->config('drupalgotchi.settings')->get('name');
 
-    return array(
-      '#theme' => 'drupalgotchi_hello',
-      '#name' => $name,
-      '#person' => $person,
-    );
   }
 
 }

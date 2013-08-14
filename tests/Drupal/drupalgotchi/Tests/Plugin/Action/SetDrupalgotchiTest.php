@@ -51,7 +51,7 @@ class SetDrupalgotchiTest extends UnitTestCase {
     $stub = $this
       ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
       ->getMock();
-    // Configure the stub to get the values passed by exexute().
+    // Configure the stub to get the values passed by execute().
     $stub->expects($this->once())
       ->method('set')
       ->with($this->equalTo('drupalgotchi.attention', 10));

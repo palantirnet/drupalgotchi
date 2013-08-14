@@ -46,18 +46,8 @@ class SetDrupalgotchiTest extends UnitTestCase {
    */
   public function testSet() {
 
-    // Set a mock class for the state container.
-    // See http://phpunit.de/manual/current/en/test-doubles.html
-    $stub = $this
-      ->getMockBuilder('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
-      ->getMock();
-    // Configure the stub to get the values passed by exexute().
-    $stub->expects($this->once())
-      ->method('set')
-      ->with($this->equalTo('drupalgotchi.attention', 10));
-
     $config = array('name' => 'foo', 'needy' => 10);
-    $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $stub);
+    $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $state);
     // Ensure that our class does not explode.
     $set->execute(10);
 

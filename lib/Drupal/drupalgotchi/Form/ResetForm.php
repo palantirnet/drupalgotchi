@@ -34,17 +34,7 @@ class ResetForm implements FormInterface {
    */
   protected $config;
 
-  /**
-   * Constructs a \Drupal\drupalgotchi\SettingsForm object.
-   *
-   * @param \Drupal\Core\Action\ActionManager $actions_manager
-   * @param \Drupal\Core\StringTranslation\TranslationManager $translation
-   * @param \Drupal\Core\Config\Config $config
-   */
-  public function __construct(ActionManager $actions_manager, TranslationManager $translation, Config $config) {
-    $this->actionsManager = $actions_manager;
-    $this->translation = $translation;
-    $this->config = $config;
+  public function __construct() {
   }
 
   /**
@@ -58,10 +48,6 @@ class ResetForm implements FormInterface {
    * {@inheritdoc}
    */
   public function buildForm(array $form, array &$form_state) {
-    $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => $this->translation->translate('Reset'),
-    );
 
     return $form;
   }
@@ -75,12 +61,6 @@ class ResetForm implements FormInterface {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, array &$form_state) {
-    $this->actionsManager->createInstance('drupalgotchi_set_attention')->execute(0);
-
-    $name = $this->config->get('name');
-    drupal_set_message($this->translation->translate('@name\'s attention level has been reset', array(
-      '@name' => $name,
-    )));
 
   }
 }

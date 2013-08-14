@@ -33,7 +33,6 @@ function drupalgotchi_menu() {
   return $items;
 }
 
-
 /**
  * Implements hook_theme().
  */
@@ -42,14 +41,6 @@ function drupalgotchi_theme() {
     'drupalgotchi_hello' => array(
       'variables' => array('name' => NULL, 'person' => NULL),
       'template' => 'drupalgotchi-hello',
-    ),
-    'drupalgotchi_hello_block' => array(
-      'variables' => array('person' => NULL),
-      'template' => 'drupalgotchi-hello-block',
-    ),
-    'drupalgotchi_status_block' => array(
-      'variables' => array('attention' => NULL, 'name' => NULL),
-      'template' => 'drupalgotchi-status-block',
     ),
   );
 }

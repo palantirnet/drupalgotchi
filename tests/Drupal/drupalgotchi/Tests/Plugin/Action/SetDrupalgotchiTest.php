@@ -57,7 +57,7 @@ class SetDrupalgotchiTest extends UnitTestCase {
       ->with(
         $this->equalTo('drupalgotchi.attention'),
         $this->equalTo(10)
-      );
+    );
 
     $config = array('name' => 'foo', 'needy' => 10);
     $set = new SetDrupalgotchi(

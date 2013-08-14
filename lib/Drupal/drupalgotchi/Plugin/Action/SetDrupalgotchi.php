@@ -39,8 +39,7 @@ class SetDrupalgotchi extends ActionBase implements ContainerFactoryPluginInterf
     return new static(
       $configuration,
       $plugin_id,
-      $plugin_definition,
-      $container->get('state')
+      $plugin_definition
     );
   }
 
@@ -53,16 +52,15 @@ class SetDrupalgotchi extends ActionBase implements ContainerFactoryPluginInterf
    * @param \Drupal\Core\KeyValueStore\KeyValueStoreInterface $state
    *   The state service.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, KeyValueStoreInterface $state) {
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->state = $state;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function execute($attention = 0) {
-    $this->state->set('drupalgotchi.attention', $attention);
+  public function execute() {
+
   }
 
 }

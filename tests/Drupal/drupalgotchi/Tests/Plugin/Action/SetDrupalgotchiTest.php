@@ -54,7 +54,7 @@ class SetDrupalgotchiTest extends UnitTestCase {
     // Configure the stub to get the values passed by execute().
     $stub->expects($this->once())
       ->method('set')
-      ->with($this->equalTo('drupalgotchi.attention', 10));
+      ->with($this->equalTo('drupalgotchi.attention'), $this->equalTo(10));
 
     $config = array('name' => 'foo', 'needy' => 10);
     $set = new SetDrupalgotchi(

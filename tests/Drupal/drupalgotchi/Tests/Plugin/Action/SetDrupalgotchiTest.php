@@ -57,8 +57,13 @@ class SetDrupalgotchiTest extends UnitTestCase {
       ->with($this->equalTo('drupalgotchi.attention', 10));
 
     $config = array('name' => 'foo', 'needy' => 10);
-    $set = new SetDrupalgotchi($config, 'drupalgotchi_set_attention', array(), $stub);
-    // Ensure that our class does not explode.
+    $set = new SetDrupalgotchi(
+      $config,
+      'drupalgotchi_set_attention',
+      array(),
+      $stub
+    );
+
     $set->execute(10);
 
   }

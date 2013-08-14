@@ -53,7 +53,7 @@ class SetDrupalgotchiTest extends UnitTestCase {
       array(),
       $state
     );
-    // Ensure that our class does not explode.
+
     $set->execute(10);
 
   }

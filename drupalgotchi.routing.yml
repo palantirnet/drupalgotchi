@@ -1,5 +1,5 @@
 drupalgotchi_hello:
-  pattern: '/drupalgotchi/{person}'
+  path: '/drupalgotchi/{person}'
   defaults:
     _content: '\Drupal\drupalgotchi\Controller\DrupalgotchiController::hello'
   requirements:
@@ -7,7 +7,7 @@ drupalgotchi_hello:
 
 
 drupalgotchi_settings:
-  pattern: '/admin/config/system/drupalgotchi'
+  path: '/admin/config/system/drupalgotchi'
   defaults:
     _form: '\Drupal\drupalgotchi\Form\SettingsForm'
   requirements:

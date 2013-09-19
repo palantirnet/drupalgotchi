@@ -8,16 +8,15 @@
 namespace Drupal\drupalgotchi\Plugin\Block;
 
 use Drupal\block\BlockBase;
-use Drupal\Component\Annotation\Plugin;
+use Drupal\block\Annotation\Block;
 use Drupal\Core\Annotation\Translation;
 
 /**
  * Provides a Drupalgotchi hello block.
  *
- * @Plugin(
- *  id = "drupalgotchi_hello",
- *  admin_label = @Translation("Hello World"),
- *  module = "drupalgotchi"
+ * @Block(
+ *   id = "drupalgotchi_hello",
+ *   admin_label = @Translation("Hello World")
  * )
  */
 class HelloBlock extends BlockBase {

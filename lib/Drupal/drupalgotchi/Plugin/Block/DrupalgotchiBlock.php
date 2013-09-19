@@ -8,7 +8,7 @@
 namespace Drupal\drupalgotchi\Plugin\Block;
 
 use Drupal\block\BlockBase;
-use Drupal\Component\Annotation\Plugin;
+use Drupal\block\Annotation\Block;
 use Drupal\Core\Annotation\Translation;
 
 use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
@@ -19,10 +19,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides a Drupalgotchi status block.
  *
- * @Plugin(
- *  id = "drupalgotchi_status",
- *  admin_label = @Translation("Drupalgotchi status"),
- *  module = "drupalgotchi"
+ * @Block(
+ *   id = "drupalgotchi_status",
+ *   admin_label = @Translation("Drupalgotchi status")
  * )
  */
 class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInterface {

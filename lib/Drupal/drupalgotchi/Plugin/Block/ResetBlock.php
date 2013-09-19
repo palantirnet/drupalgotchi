@@ -8,7 +8,7 @@
 namespace Drupal\drupalgotchi\Plugin\Block;
 
 use Drupal\block\BlockBase;
-use Drupal\Component\Annotation\Plugin;
+use Drupal\block\Annotation\Block;
 use Drupal\Core\Annotation\Translation;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -22,10 +22,9 @@ use Drupal\drupalgotchi\Form\ResetForm;
 /**
  * Provides a Drupalgotchi reset form.
  *
- * @Plugin(
- *  id = "drupalgotchi_reset",
- *  admin_label = @Translation("Reset Drupalgotchi"),
- *  module = "drupalgotchi"
+ * @Block(
+ *   id = "drupalgotchi_reset",
+ *   admin_label = @Translation("Reset Drupalgotchi")
  * )
  */
 class ResetBlock extends BlockBase implements ContainerFactoryPluginInterface {

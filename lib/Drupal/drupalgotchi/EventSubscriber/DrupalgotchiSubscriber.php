@@ -77,7 +77,9 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
 
     if ($event->getRequest()->attributes->get('_account')->hasPermission('make drupalgotchi happy')) {
       $neediness = $this->config->get('needy');
-      $change = 10 - $neediness;
+      // Since the neediness is 1-based, we need to subtract it from 11 or we
+      // sometimes get a change of 0.
+      $change = 11 - $neediness;
       $attention_quotient += $change;
     }
     else {

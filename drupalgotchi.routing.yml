@@ -1,4 +1,4 @@
-drupalgotchi_hello:
+drupalgotchi.hello:
   path: '/drupalgotchi/{person}'
   defaults:
     _content: '\Drupal\drupalgotchi\Controller\DrupalgotchiController::hello'
@@ -6,7 +6,7 @@ drupalgotchi_hello:
     _permission: 'access content'
 
 
-drupalgotchi_settings:
+drupalgotchi.settings:
   path: '/admin/config/system/drupalgotchi'
   defaults:
     _form: '\Drupal\drupalgotchi\Form\SettingsForm'

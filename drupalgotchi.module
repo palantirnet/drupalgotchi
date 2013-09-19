@@ -21,13 +21,13 @@ function drupalgotchi_menu() {
   $items['drupalgotchi'] = array(
     'title' => 'Drupalgotchi',
     'description' => 'The requisite hello-world page.',
-    'route_name' => 'drupalgotchi_hello',
+    'route_name' => 'drupalgotchi.hello',
   );
 
   $items['admin/config/system/drupalgotchi'] = array(
     'title' => 'Configure Drupalgotchi',
     'description' => 'Setup the Drupalgotchi for your site.',
-    'route_name' => 'drupalgotchi_settings',
+    'route_name' => 'drupalgotchi.settings',
   );
 
   return $items;

@@ -2,14 +2,14 @@
 
 namespace Drupal\drupalgotchi\Form;
 
-use Drupal\system\SystemConfigFormBase;
+use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Config\Config;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configuration form for Drupalgotchi.
  */
-class SettingsForm extends SystemConfigFormBase {
+class SettingsForm extends ConfigFormBase {
 
   /**
    * The configuration object.

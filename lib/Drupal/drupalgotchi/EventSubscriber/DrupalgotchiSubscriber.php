@@ -11,6 +11,7 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\StringTranslation\TranslationManager;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Drupalgotchi request events.
@@ -39,6 +40,14 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
   protected $translator;
 
   /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
+
+  /**
+   * Constructs a new DrupalgotchiSubscriber object.
    *
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The configuration system.
@@ -46,11 +55,14 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
    *   The state storage system.
    * @param \Drupal\Core\StringTranslation\TranslationManager $translator
    *   The translation system.
+   * @param \Drupal\Core\Session\AccountInterface $user
+   *   The current user to validate against.
    */
-  public function __construct(ConfigFactory $config_factory, KeyValueStoreInterface $state, TranslationManager $translator) {
+  public function __construct(ConfigFactory $config_factory, KeyValueStoreInterface $state, TranslationManager $translator, AccountInterface $user) {
     $this->config = $config_factory->get('drupalgotchi.settings');
     $this->state = $state;
     $this->translator = $translator;
+    $this->currentUser = $user;
   }
 
   /**
@@ -75,7 +87,7 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
 
     $attention_quotient = $this->state->get('drupalgotchi.attention') ?: 0;
 
-    if ($event->getRequest()->attributes->get('_account')->hasPermission('make drupalgotchi happy')) {
+    if ($this->currentUser->hasPermission('make drupalgotchi happy')) {
       $neediness = $this->config->get('needy');
       // Since the neediness is 1-based, we need to subtract it from 11 or we
       // sometimes get a change of 0.

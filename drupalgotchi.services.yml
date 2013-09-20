@@ -1,6 +1,7 @@
 services:
   drupalgotchi.subscriber:
     class: Drupal\drupalgotchi\EventSubscriber\DrupalgotchiSubscriber
-    arguments: ['@config.factory', '@state', '@string_translation']
+    arguments: ['@config.factory', '@state', '@string_translation', '@current_user']
+    scope: request
     tags:
       - { name: event_subscriber }

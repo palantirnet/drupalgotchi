@@ -18,7 +18,7 @@ class HelloController extends ControllerBase {
    *   A string that is the body of a page.
    */
   public function hello() {
-    return "Hello World";
+
   }
 
   /**
@@ -28,9 +28,7 @@ class HelloController extends ControllerBase {
    *   A JSON response.
    */
   public function helloPage() {
-    $json['hello'] = 'World';
 
-    return new JsonResponse($json);
   }
 
   /**
@@ -43,10 +41,7 @@ class HelloController extends ControllerBase {
    *   A theme array. See hellodrupal-hello.html.twig.
    */
   public function helloPerson($person) {
-    return array(
-      '#theme' => 'drupalgotchi_hello',
-      '#person' => $person,
-    );
+
   }
 
 }

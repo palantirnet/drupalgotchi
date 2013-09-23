@@ -1,12 +1,1 @@
 # Schema for the configuration files of the Action module.
-
-drupalgotchi.settings:
-  type: mapping
-  label: 'Drupalgotchi settings'
-  mapping:
-    name:
-      type: string
-      label: "The name of your site's persona"
-    needy:
-      type: integer
-      label: 'How needy your site is'

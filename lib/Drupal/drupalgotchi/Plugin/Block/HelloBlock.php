@@ -25,39 +25,23 @@ class HelloBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function settings() {
-    return array(
-      'person' => 'World',
-    );
   }
 
   /**
    * {@inheritdoc}
    */
   public function blockForm($form, &$form_state) {
-    $form['person'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Person'),
-      '#maxlength' => 50,
-      '#default_value' => $this->configuration['person'],
-      '#required' => TRUE,
-    );
-    return $form;
   }
 
   /**
    * {@inheritdoc}
    */
   public function blockSubmit($form, &$form_state) {
-    $this->configuration['person'] = $form_state['values']['person'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    return array(
-      '#theme' => 'drupalgotchi_hello_block',
-      '#person' => $this->configuration['person'],
-    );
   }
 }

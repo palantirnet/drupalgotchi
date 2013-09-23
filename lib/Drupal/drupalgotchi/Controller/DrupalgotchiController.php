@@ -28,18 +28,4 @@ class DrupalgotchiController extends ControllerBase {
     );
   }
 
-  /**
-   * About the module.
-   *
-   * @return
-   *  a theme array.  See drupalgotchi-about.html.twig.
-   */
-  public function about() {
-    $name = $this->config('drupalgotchi.settings')->get('name');
-
-    return array(
-      '#name' => $name,
-      '#theme' => 'drupalgotchi_about',
-    );
-  }
 }

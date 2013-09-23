@@ -12,9 +12,3 @@ drupalgotchi.settings:
   requirements:
     _permission: 'administer drupalgotchi'
 
-drupalgotchi.about:
-  path: '/drupalgotchi/about'
-  defaults:
-    _content: '\Drupal\drupalgotchi\Controller\DrupalgotchiController::about'
-  requirements:
-    _permission: 'access content'

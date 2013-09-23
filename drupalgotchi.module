@@ -22,12 +22,20 @@ function drupalgotchi_menu() {
     'title' => 'Drupalgotchi',
     'description' => 'The requisite hello-world page.',
     'route_name' => 'drupalgotchi.hello',
+    'menu_name' => 'main',
   );
 
   $items['admin/config/system/drupalgotchi'] = array(
     'title' => 'Configure Drupalgotchi',
     'description' => 'Setup the Drupalgotchi for your site.',
     'route_name' => 'drupalgotchi.settings',
+  );
+
+  $items['drupalgotchi-about'] = array(
+    'title' => 'About Drupalgotchi module',
+    'description' => 'A brief description of the drupalgotchi module',
+    'route_name' => 'drupalgotchi.about',
+    'menu_name' => 'main',
   );
 
   return $items;
@@ -50,6 +58,10 @@ function drupalgotchi_theme() {
     'drupalgotchi_status_block' => array(
       'variables' => array('attention' => NULL, 'name' => NULL),
       'template' => 'drupalgotchi-status-block',
+    ),
+    'drupalgotchi_about' => array(
+      'variables' => array('name' => NULL),
+      'template' => 'drupalgotchi-about',
     ),
   );
 }

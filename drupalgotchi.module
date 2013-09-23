@@ -24,12 +24,6 @@ function drupalgotchi_menu() {
     'route_name' => 'drupalgotchi.hello',
   );
 
-  $items['admin/config/system/drupalgotchi'] = array(
-    'title' => 'Configure Drupalgotchi',
-    'description' => 'Setup the Drupalgotchi for your site.',
-    'route_name' => 'drupalgotchi.settings',
-  );
-
   $items['drupalgotchi-about'] = array(
     'title' => 'About Drupalgotchi module',
     'description' => 'A brief description of the drupalgotchi module',

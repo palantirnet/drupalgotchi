@@ -22,7 +22,6 @@ function drupalgotchi_menu() {
     'title' => 'Drupalgotchi',
     'description' => 'The requisite hello-world page.',
     'route_name' => 'drupalgotchi.hello',
-    'menu_name' => 'main',
   );
 
   $items['admin/config/system/drupalgotchi'] = array(

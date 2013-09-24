@@ -24,7 +24,7 @@ class HelloBlock extends BlockBase {
   /**
    * {@inheritdoc}
    */
-  public function settings() {
+  public function defaultConfiguration() {
   }
 
   /**

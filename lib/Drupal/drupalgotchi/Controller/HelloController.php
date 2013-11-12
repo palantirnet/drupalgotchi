@@ -38,7 +38,7 @@ class HelloController extends ControllerBase {
    *   The name to display.
    *
    * @return
-   *   A theme array. See hellodrupal-hello.html.twig.
+   *   A theme array. See drupalgotchi-hello.html.twig.
    */
   public function helloPerson($person) {
 

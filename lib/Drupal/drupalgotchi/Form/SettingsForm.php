@@ -21,7 +21,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * Constructs a \Drupal\drupalgotchi\SettingsForm object.
    *
-   * @param \Drupal\Core\Config\Config $configy
+   * @param \Drupal\Core\Config\Config $config
    *   The configuration object.
    */
   public function __construct(Config $config) {

@@ -1,0 +1,70 @@
+diff --git a/config/schema/drupalgotchi.settings.yml b/config/schema/drupalgotchi.settings.yml
+index fdc2260..64aa4c6 100644
+--- a/config/schema/drupalgotchi.settings.yml
++++ b/config/schema/drupalgotchi.settings.yml
+@@ -1,4 +1,4 @@
+-# Schema for the configuration files of the Action module.
++# Schema for the configuration files of the Drupalgotchi module.
+ 
+ drupalgotchi.settings:
+   type: mapping
+diff --git a/lib/Drupal/drupalgotchi/Controller/HelloController.php b/lib/Drupal/drupalgotchi/Controller/HelloController.php
+index 248d25f..ee2ba9d 100644
+--- a/lib/Drupal/drupalgotchi/Controller/HelloController.php
++++ b/lib/Drupal/drupalgotchi/Controller/HelloController.php
+@@ -40,7 +40,7 @@ class HelloController extends ControllerBase {
+    *   The name to display.
+    *
+    * @return
+-   *   A theme array. See hellodrupal-hello.html.twig.
++   *   A theme array. See drupalgotchi-hello.html.twig.
+    */
+   public function helloPerson($person) {
+     return array(
+diff --git a/lib/Drupal/drupalgotchi/Form/ResetForm.php b/lib/Drupal/drupalgotchi/Form/ResetForm.php
+index 99ec1f0..588adf9 100644
+--- a/lib/Drupal/drupalgotchi/Form/ResetForm.php
++++ b/lib/Drupal/drupalgotchi/Form/ResetForm.php
+@@ -23,14 +23,14 @@ class ResetForm implements FormInterface {
+   /**
+    * The translation system.
+    *
+-   * @var \Drupal\Core\Translation\TranslationManager
++   * @var \Drupal\Core\StringTranslation\TranslationManager
+    */
+   protected $translation;
+ 
+   /**
+    * The configuration object.
+    *
+-   * @var \Drupal\Core\Config
++   * @var \Drupal\Core\Config\Config
+    */
+   protected $config;
+ 
+diff --git a/lib/Drupal/drupalgotchi/Form/SettingsForm.php b/lib/Drupal/drupalgotchi/Form/SettingsForm.php
+index cf70f3c..718d228 100644
+--- a/lib/Drupal/drupalgotchi/Form/SettingsForm.php
++++ b/lib/Drupal/drupalgotchi/Form/SettingsForm.php
+@@ -21,7 +21,7 @@ class SettingsForm extends ConfigFormBase {
+   /**
+    * Constructs a \Drupal\drupalgotchi\SettingsForm object.
+    *
+-   * @param \Drupal\Core\Config\Config $configy
++   * @param \Drupal\Core\Config\Config $config
+    *   The configuration object.
+    */
+   public function __construct(Config $config) {
+diff --git a/lib/Drupal/drupalgotchi/Plugin/Block/DrupalgotchiBlock.php b/lib/Drupal/drupalgotchi/Plugin/Block/DrupalgotchiBlock.php
+index 9ff40a3..b9d791c 100644
+--- a/lib/Drupal/drupalgotchi/Plugin/Block/DrupalgotchiBlock.php
++++ b/lib/Drupal/drupalgotchi/Plugin/Block/DrupalgotchiBlock.php
+@@ -50,7 +50,7 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
+    * Constructs a new DrupalgotchiBlock object.
+    *
+    * @param array $configuration
+-   * @param type $plugin_id
++   * @param string $plugin_id
+    * @param array $plugin_definition
+    * @param \Drupal\Core\KeyValueStore\KeyValueStoreInterface $state
+    *   The state service.

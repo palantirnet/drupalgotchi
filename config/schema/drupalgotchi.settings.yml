@@ -1,4 +1,4 @@
-# Schema for the configuration files of the Action module.
+# Schema for the configuration files of the Drupalgotchi module.
 
 drupalgotchi.settings:
   type: mapping

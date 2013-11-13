@@ -33,7 +33,6 @@ function drupalgotchi_menu() {
   return $items;
 }
 
-
 /**
  * Implements hook_theme().
  */

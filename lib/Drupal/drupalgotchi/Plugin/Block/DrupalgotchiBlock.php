@@ -57,7 +57,7 @@ class DrupalgotchiBlock extends BlockBase implements ContainerFactoryPluginInter
    * Constructs a new DrupalgotchiBlock object.
    *
    * @param array $configuration
-   * @param type $plugin_id
+   * @param string $plugin_id
    * @param array $plugin_definition
    * @param \Drupal\Core\KeyValueStore\KeyValueStoreInterface $state
    *   The state service.

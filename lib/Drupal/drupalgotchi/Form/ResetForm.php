@@ -23,14 +23,14 @@ class ResetForm implements FormInterface {
   /**
    * The translation system.
    *
-   * @var \Drupal\Core\Translation\TranslationManager
+   * @var \Drupal\Core\StringTranslation\TranslationManager
    */
   protected $translation;
 
   /**
    * The configuration object.
    *
-   * @var \Drupal\Core\Config
+   * @var \Drupal\Core\Config\Config
    */
   protected $config;
 

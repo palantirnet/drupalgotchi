@@ -11,4 +11,3 @@ drupalgotchi.settings:
     _form: '\Drupal\drupalgotchi\Form\SettingsForm'
   requirements:
     _permission: 'administer drupalgotchi'
-

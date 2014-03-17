@@ -9,6 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
+use Drupal\Core\KeyValueStore\StateInterface;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\StringTranslation\TranslationManager;
 use Drupal\Core\Session\AccountInterface;
@@ -19,9 +20,9 @@ use Drupal\Core\Session\AccountInterface;
 class DrupalgotchiSubscriber implements EventSubscriberInterface {
 
   /**
-   * The state system.
+   * The state service.
    *
-   * @var \Drupal\Core\KeyValueStore\KeyValueStoreInterface
+   * @var \Drupal\Core\KeyValueStore\StateInterface
    */
   protected $state;
 
@@ -58,7 +59,7 @@ class DrupalgotchiSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Session\AccountInterface $user
    *   The current user to validate against.
    */
-  public function __construct(ConfigFactory $config_factory, KeyValueStoreInterface $state, TranslationManager $translator, AccountInterface $user) {
+  public function __construct(ConfigFactory $config_factory, StateInterface $state, TranslationManager $translator, AccountInterface $user) {
     $this->config = $config_factory->get('drupalgotchi.settings');
     $this->state = $state;
     $this->translator = $translator;
